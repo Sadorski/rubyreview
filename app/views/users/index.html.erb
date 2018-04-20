@@ -1,0 +1,31 @@
+<h3> Welcome! </h3>
+<div class="d-inline-block">
+    <h3>Register </h3>
+    <form action="/create" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        First Name: <input type=text name=user[first_name]>
+        Last Name: <input type=text name=user[last_name]>
+        Email: <input type=text name=user[email]>
+        Location: <input type=text name=location[city]>
+        <select name=location[state]>
+        <% @location.each do |state| %>
+            <option value="<%=state%>"><%=state
+            %></option>
+        <% end %>
+        </select>
+        Password: <input type=password name=user[password]>
+        Confirm PW: <input type=password name=user[password_confirmation]>
+        <input class="btn-primary" type=submit name=submit value=Register>
+    </form>
+</div>
+<div class="d-inline-block">
+    <h3> Login </h3>
+    <form action="/login" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        Email: <input type=text name=user[email]>
+        Password: <input type=password name=user[password]>
+        <input class="btn-primary" name=submit type=submit value=Login>
+    </form>
+</div>
+
+

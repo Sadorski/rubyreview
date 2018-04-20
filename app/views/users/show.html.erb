@@ -1,0 +1,18 @@
+<a href='/events' class=btn>Events Dashboard</a>
+
+<h3> Edit Your Profile </h3>
+<form action=/update method=post>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    First Name: <input type="text" name="user[first_name]" value="<%=current_user.first_name%>">
+    Last Name: <input type="text" name="user[last_name]" value="<%=current_user.last_name%>">
+    Email: <input type="text" name="user[email]" value="<%=current_user.email%>">
+    Location: <input type="text" name="location[city]" value="<%=current_user.location.city%>">
+    <select name=location[state]>
+        <option value="<%=current_user.location.state%>"><%=current_user.location.state%></option>
+        <% @location.each do |state| %>
+        <option value="<%=state%>"><%=state%></option>
+        <% end %>
+    </select>
+    <input class=btn-primary name=submit type=submit value="Update Records">
+</form>
+

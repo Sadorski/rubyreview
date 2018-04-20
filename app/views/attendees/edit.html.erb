@@ -1,0 +1,16 @@
+<a href=/events>Events Dashboard</a>
+
+<h4> Edit your Event </h4>
+<form action="/events/<%=@event.id%>/update" method=post>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Name: <input type="text" name="event[name]" value="<%=@event.name%>">
+    Date: <input type="date" name="event[date]" value="<%=@event.date%>">
+    Location : <input type="text" name="location[city]" value="<%=@event.location.city%>">
+    <select name=location[state]>
+        <option value="<%=@event.location.state%>"><%=@event.location.state%></option>
+        <% @location.each do |state| %>
+        <option value="<%=state%>"><%=state%></option>
+        <% end %>
+    </select>
+    <input class=btn-primary name=submit type=submit value="Update Records">
+</form>
